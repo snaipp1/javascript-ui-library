@@ -8,5 +8,7 @@ $('div').click(function () {
     console.log($(this).index());
 });
 
-console.log($('div').eq(2).find('.some'))
+// console.log($('div').eq(2).find('.some'))
+// console.log($('.some').closest('.findme1').addClasses('test'))
+console.log($('.more').eq(0).siblings())
 
