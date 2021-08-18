@@ -58,3 +58,31 @@ $.prototype.fadeOut = function (dur, fin) {
     return this;
 
 }
+
+$.prototype.fadeToggle = function (dur, display, fin) {
+    for (let i = 0; i < this.length; i += 1) {
+        if (window.getComputedStyle(this[i]).display === 'none') {
+            this[i].style.display = display || 'block'; 
+
+            const _fadeIn = (complection) => {
+                this[i].style.opacity = complection;
+            };
+        
+            const animation = this.animateOverTime(dur, _fadeIn, fin);
+            requestAnimationFrame(animation);
+        } else {
+            const _fadeOut = (complection) => {
+                this[i].style.opacity = 1 - complection;
+                if(complection === 1) {
+                    this[i].style.display = 'none'; 
+                }
+            };
+        
+            const animation = this.animateOverTime(dur, _fadeOut, fin);
+            requestAnimationFrame(animation);
+        }
+       
+    }
+
+    return this;
+}
